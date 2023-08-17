@@ -1,0 +1,10 @@
+.event {
+    background-color: transparent; // color por defecto transparente
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    overflow: hidden; // en caso de que el texto sea largo
+    white-space: nowrap; // para que no se rompa en varias líneas
+    text-overflow: ellipsis; 
+    color: rgb(255, 255, 255)
+}

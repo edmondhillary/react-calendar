@@ -1,0 +1,39 @@
+.day-view {
+  padding: 1rem;
+  overflow: auto;
+  height: 100%;
+}
+
+.day-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hour-column,
+.event-column {
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+.hour-cell,
+.event-cell {
+  padding: 2rem 1rem;
+  border: 1px solid #ccc;
+}
+
+.even-row .hour-cell,
+.even-row .event-cell {
+  background-color: #f9f9f9;
+}
+
+.odd-row .hour-cell,
+.odd-row .event-cell {
+  background-color: #e9e9e9;
+}
+/* WeekView.scss */
+.day-cell {
+  position: relative; 
+  height: 60px; // o la altura que desees para cada hora en la vista
+}

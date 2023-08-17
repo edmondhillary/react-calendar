@@ -1,0 +1,313 @@
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #app {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .calendar {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    margin: auto;
+  
+    .days-of-week {
+      height: 30px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-wrap: no-wrap;
+      width: 100%;
+    }
+  
+    .days-of-month {
+      flex: 1 1 auto;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .day-of-week,
+    .day {
+      flex: 1 0 calc(100% / 7);
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+    }
+  
+    .day-of-week {
+      height: 30px;
+    }
+  
+    .day {
+      font-weight: 400;
+  
+      &::after {
+        content: attr(data-day);
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+    }
+    
+    .day-of-week {
+      background-color: transparent;
+      border-top: transparent;
+  
+      .full {
+        display: inline;
+      }
+      .short {
+        display: none;
+      }
+  
+      @media (max-width: 480px) {
+        .full {
+          display: none;
+        }
+        .short {
+          display: inline;
+        }
+      }
+    }
+  
+    .day.today {
+      background: #ffde719c;
+    }
+  
+    .day.empty {
+      background-color: #E6E6E6;
+    }
+  }
+  
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background: #fffefe;
+  
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      margin: 0 10px; 
+    }
+  
+    h1 {
+      margin: 0;
+      border-bottom: 2px solid #ffcbca; 
+    }
+  }
+  
+  
+  .month-name {
+    text-transform: capitalize; // Primera letra en mayúscula
+    text-decoration: underline; // Subrayado
+    letter-spacing: 0.18rem;
+    text-decoration-color: #ffcbca; // Color del subrayado
+    // Otros estilos según sea necesario (por ejemplo, tamaño de fuente, color, etc.)
+  }
+  .day.prev-month,
+.day.next-month {
+  color: #666; // color oscuro para los días sobrantes
+  background-color: #E6E6E6;
+}
+
+  .current-month-btn {
+    background-color: transparent;
+    color: rgb(35, 34, 34);
+    border-radius: 1rem;
+    // color: white;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 10px;
+    width: 10%;
+    // margin-right: 10px;
+    cursor: pointer;
+   
+  
+    &:hover {
+      background-color: #f2f2f2;
+      color: black;
+    }
+  
+    &:active {
+      box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.3);
+      background-color: #FA5A5B;
+      color: #fff;
+    }
+  }
+  .header .view-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .view-button {
+    padding: 10px 20px; // Ajusta el ancho del padding según lo necesites
+    border: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 !important; // Asegurarse de que no haya margen
+  
+  
+    &:hover {
+      background-color: #f0f0f0; // Gris más claro para el hover
+    }
+  
+    &.active {
+      background-color: #FA5A5B;
+      color: white;
+    }
+  }
+  
+  .header .view-buttons .view-button {
+    border:1px solid transparent
+  }
+  
+  .header .view-buttons .view-button:first-child {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem !important;
+
+  }
+  
+  .header .view-buttons .view-button:last-child {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem !important;
+  }
+  .add-event-button {
+    position: absolute;
+    top: 2rem;   /* Ajusta según prefieras */
+    left: 2rem;  /* Ajusta según prefieras */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;   /* Para hacerlo circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);  /* Shadow gris oscuro */
+    transition: box-shadow 0.3s ease;  /* Transición suave al hacer hover */
+    cursor: pointer;
+  }
+  
+  .add-event-button:hover {
+    box-shadow: 0px 4px 5px rgba(0, 128, 0, 0.6);  /* Shadow verde al hacer hover */
+  }
+  .add-event-button {
+    width: 36px;
+    height: 36px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+  }
+  
+  .add-event-button:hover {
+    box-shadow: 0 2px 4px rgba(0,128,0,0.3);
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  /* Estilos para el modal */
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con opacidad */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-content h2 {
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.modal-content button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+
+  
+  @media (max-width: 550px) {
+    .current-month-btn {
+      display: none;
+    }
+  }
+  @media (max-width: 1128px) { // Puedes ajustar este valor según tus necesidades
+    .header .view-buttons {
+      
+      position: absolute;
+      top: 0;
+      right: 1rem; 
+    }
+  
+    .header .view-buttons .view-button {
+      padding: 5px 10px; // Reduce a la mitad el padding
+      font-size: 0.8rem; // Reduce el tamaño de la fuente
+    }
+    h1 {
+    
+        font-size: 1.2rem; // Tamaño de fuente más pequeño
+        font-weight: 300; // Grosor de fuente más fino
+      }
+  }
