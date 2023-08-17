@@ -58,7 +58,7 @@ function Header({
     } ${year}`;
   }
 
-  const viewButtons = ["Mes", "Semana", "Dia", "Hoy", "Agenda"];
+  const viewButtons = ["Mes", "Semana", "Dia", "Hoy"];
 
   return (
     <div className='header'>
