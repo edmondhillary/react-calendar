@@ -59,7 +59,7 @@ function Header({
   }
 
   const viewButtons = ["Mes", "Semana", "Dia", "Hoy"];
-
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className='header'>
       <button
@@ -112,7 +112,7 @@ function Header({
         &gt;
       </button>
 
-      <div className='add-event-button' onClick={() => setIsModalOpen(true)}>
+      {/* <div className='add-event-button' onClick={() => setIsModalOpen(true)}>
         <svg width='36' height='36' viewBox='0 0 36 36'>
           <path fill='#34A853' d='M16 16v14h4V20z'></path>
           <path fill='#4285F4' d='M30 16H20l-4 4h14z'></path>
@@ -120,13 +120,13 @@ function Header({
           <path fill='#EA4335' d='M20 16V6h-4v14z'></path>
           <path fill='none' d='M0 0h36v36H0z'></path>
         </svg>
-      </div>
+      </div>  */}
 
       {isModalOpen && (
         <div className='modal'>
           <div className='modal-content'>
             <h2>Añadir Evento</h2>
-            <EventForm setIsModalOpen={setIsModalOpen} onSubmit={handleEventSubmit} />
+            <EventForm onClose={() => setShowModal(false)} setIsModalOpen={setIsModalOpen} onSubmit={handleEventSubmit} />
           </div>
         </div>
       )}
